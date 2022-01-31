@@ -20,9 +20,16 @@ export default function App() {
   return (
     /* Header kısmı*/
     <View>
-    <View style={{marginTop:70,borderBottomWidth:1 , borderColor:'#DCDCDC',alignItems: 'center', justifyContent: 'center' }}>
-       <Text style={{color:'black', marginBottom:10}}>RM</Text>
-    </View>
+    <View style={{marginTop:50,borderBottomWidth:1 , borderColor:'#DCDCDC',alignItems: 'center', justifyContent: 'center' }}>
+       <Image style={{width:40,height:30,marginBottom:10}} source={require('./assets/M.png')} />
+       <TouchableOpacity
+        onPress={() => { setName("300") }}
+        style={{
+          position:"absolute", right:3,bottom:3,shadowColor:'white'
+        }}
+         >    
+         
+       <Ionicons style={{position:"absolute", right:12,bottom:7}} name="settings-outline" size={30} color={"black"} />
 
         </TouchableOpacity>
     </View>
