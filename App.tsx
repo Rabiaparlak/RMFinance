@@ -1,7 +1,8 @@
 import React from "react";
-import { View, Text, StyleSheet, TouchableOpacity, Modal, Button } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity, Modal } from "react-native";
 import { Ionicons, AntDesign, FontAwesome, FontAwesome5, Foundation } from '@expo/vector-icons';
 import { Image } from 'react-native';
+import { Box, Input, NativeBaseProvider, Button } from 'native-base';
 
 /*
   const App = () => {
@@ -13,13 +14,15 @@ export default function App() {
 
   const [name, setName] = React.useState("200.00");
   const [modal, setModal] = React.useState(false);
+  const [modalAdd, setModalAdd] = React.useState(0)// 1-ekle, 2-çıkar;
   const [modalSecond, setModalSecond] = React.useState(false);
   const [modalThird, setModalThird] = React.useState(false);
   const [modalFourth, setModalFourth] = React.useState(false);
 
+
   return (
     /* Logo ve ayarlar kısmı*/
-    <View style={styles.header}>
+    <NativeBaseProvider>
       <View style={styles.iconView}>
         <Image style={styles.iconImage} source={require('./assets/M.png')} />
         <TouchableOpacity
@@ -67,6 +70,7 @@ export default function App() {
                   <FontAwesome name="times" size={40} color={"black"} />
                 </View>
               </TouchableOpacity>
+
               <View style={{ paddingLeft: 20 }}>
                 <Text style={styles.modalTittle}>İhtiyaç Hesap</Text>
                 <Text style={styles.modalExplanation}>Para eklemek mi istiyorsun çıkarmak mı? </Text>
@@ -75,19 +79,37 @@ export default function App() {
                     onPress={() => {
                       setModal(false)
                     }}
-                    title="       Ekle        "
-                    color="green"
-                  />
+                    style={{ backgroundColor:'#008000', height: 30  }}
+                  >
+                    <Text style={{ marginHorizontal: 10,color:'white' }}>Ekle</Text>
+                  </Button>
+
                   <Button
                     onPress={() => {
                       setModal(false)
                     }}
-                    title="       Çıkar       "
-                    color="red"
-                  />
+                    style={{ backgroundColor: '#DD2C00', height: 30 }}
+                  >
+                    <Text style={{ marginHorizontal: 10, color:'white' }}>Çıkar</Text>
+                  </Button>
+
                 </View>
+
+                <Box top={30}>
+                  <Input alignSelf={"center"} placeholder="Input" width="100px" />
+                </Box>
               </View>
             </View>
+
+            <Button
+              onPress={() => {
+                setModal(false)
+              }}
+              style={{ backgroundColor: 'green', height: 40, marginTop: 30 }}
+            >
+              <Text style={{ marginHorizontal: 80,color:'white' }}>Hesapla</Text>
+            </Button>
+
           </View>
         </Modal>
 
@@ -134,14 +156,14 @@ export default function App() {
                   onPress={() => {
                     setModal(false)
                   }}
-                  title="       Ekle        "
+                  //title="       Ekle        "
                   color="green"
                 />
                 <Button
                   onPress={() => {
                     setModal(false)
                   }}
-                  title="       Çıkar       "
+                  // title="       Çıkar       "
                   color="red"
                 />
               </View>
@@ -196,14 +218,14 @@ export default function App() {
                     onPress={() => {
                       setModal(false)
                     }}
-                    title="       Ekle        "
+                    // title="       Ekle        "
                     color="green"
                   />
                   <Button
                     onPress={() => {
                       setModal(false)
                     }}
-                    title="       Çıkar       "
+                    // title="       Çıkar       "
                     color="red"
                   />
                 </View>
@@ -254,14 +276,14 @@ export default function App() {
                   onPress={() => {
                     setModal(false)
                   }}
-                  title="       Ekle        "
+                  // title="       Ekle        "
                   color="green"
                 />
                 <Button
                   onPress={() => {
                     setModal(false)
                   }}
-                  title="       Çıkar       "
+                  // title="       Çıkar       "
                   color="red"
                 />
               </View>
@@ -270,7 +292,7 @@ export default function App() {
         </View>
       </Modal>
 
-      {/* Toplam Hesapları ayrıntılı gösteren kart */}            
+      {/* Toplam Hesapları ayrıntılı gösteren kart */}
       <View style={styles.totalView}>
 
         <View style={styles.total}>
@@ -312,13 +334,13 @@ export default function App() {
 
       </View>
 
-    </View>
+    </NativeBaseProvider>
 
   )
 }
 
 
-{/* Style Kodları */}
+{/* Style Kodları */ }
 
 const styles = StyleSheet.create({
   header: { flex: 1 },
@@ -329,30 +351,30 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     flex: 1
   },
-  modalCard:{
+  modalCard: {
     backgroundColor: "white", width: 350, height: 250, borderRadius: 20,
     shadowColor: "#000", shadowOffset: { width: 0, height: 2, },
     shadowOpacity: 0.25, shadowRadius: 3.84, elevation: 5, padding: 20
   },
-  modalClos:{ 
-    left: 280, 
-    top: -8 
+  modalClos: {
+    left: 280,
+    top: -8
   },
-  modalTittle:{ 
-    fontSize: 23, 
-    fontWeight: "bold", 
-    left: 75 
+  modalTittle: {
+    fontSize: 23,
+    fontWeight: "bold",
+    left: 75
   },
-  modalExplanation:{ 
-    fontSize: 18, 
-    top: 5 
+  modalExplanation: {
+    fontSize: 18,
+    top: 5
   },
-  modalButtons:{ 
-    top: 20, 
-    paddingLeft: 40, 
-    paddingRight: 60, 
-    flexDirection: 'row', 
-    justifyContent: 'space-between' 
+  modalButtons: {
+    top: 20,
+    paddingLeft: 40,
+    paddingRight: 60,
+    flexDirection: 'row',
+    justifyContent: 'space-between'
   },
 
   iconView: {
